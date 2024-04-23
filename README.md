@@ -1,10 +1,12 @@
-# Título del Proyecto
+# Implantación y diseño de un sistema de detección de insiders mediante Wazuh
 
-Nombre autoexplicativo del proyecto, con una breve descripción.
+Este repositorio contiene los scripts y configuraciones utilizados en el desarrollo del Trabajo de Fin de Grado (TFG) centrado en el diseño y desarrollo de un sistema para detectar "insiders" (usuarios internos malintencionados) mediante la recopilación y análisis de registros del sistema y la caracterización de amenazas.
 
 ## Descripción
 
-Una descripción más detallada y técnica del proyecto, incluyendo sus principales características, su propósito y cómo funciona.
+1) Implementación y Configuración de Wazuh: Concentración en la implementación y configuración de la herramienta Wazuh, un sistema de detección de amenazas y seguridad basada en código abierto.
+2) Desarrollo de Reglas y Patrones: Formulación de reglas y patrones específicos para identificar comportamientos anómalos o acciones sospechosas realizadas por usuarios internos.
+3) Integración de Inteligencia Artificial: Investigación y desarrollo de una solución que habilite la aplicación de inteligencia artificial en la identificación y caracterización de amenazas, tales como los Indicadores de Compromiso (IoC).
 
 ## Insignias
 
@@ -18,25 +20,29 @@ Capturas de pantalla, videos o GIFs que demuestran lo que hace el proyecto y có
 
 Estas instrucciones te guiarán para obtener una copia de este proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-### Prerrequisitos 📋
+### Software utilizado 📋
 
-Lista de software y herramientas, incluyendo versiones, que necesitas para instalar y ejecutar este proyecto:
+Lista de software y herramientas utilizados, incluyendo versiones:
 
-- Sistema Operativo (por ejemplo, Ubuntu 20.04, Windows 10)
-- Lenguaje de programación (por ejemplo, Python 3.8)
-- Framework (por ejemplo, Django 3.1)
-- Base de datos (por ejemplo, PostgreSQL 12)
-- Otros...
+1. Sistemas Operativos:
+•	Microsoft Windows: Windows 11 PRO v10.0.22631 tanto en equipo de trabajo como en la máquina virtual
+•	GNU/Linux: Ubuntu 22.04.3 LTS
+2. Virtualización/Contenedores:
+•	VirtualBox
+
 
 ### Instalación 🔧
 
-Una guía paso a paso sobre cómo configurar el entorno de desarrollo e instalar todas las dependencias.
+#### Wazuh Indexer
 
 ```bash
-# paso 1
-```
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+curl -sO https://packages.wazuh.com/4.7/config.yml
 
-Y así sucesivamente...
+```
+Se debe editar el `config.yml` con el nombre de los nodos y su dirección IP.
+<p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p> 
+
 
 ```bash
 # paso 2
