@@ -57,8 +57,36 @@ Obtenida la contraseña se ejecuta lo siguiente de forma separada cambiando los 
 ```bash
 curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200
 curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200/_cat/nodes?v
-
 ```
+#### Wazuh Server
+
+Se descarga el instalador de Wazuh en el servidor
+```bash
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+```
+Y ahora se ejecuta el instalador de Wazuh con el nombre del nodo servidor , si se requieren más servidores se ejecuta el mismo comando
+```bash
+bash wazuh-install.sh --wazuh-server <WAZUH_SERVER_NAME>
+```
+
+#### Wazuh Dashboard
+
+Se descarga el instalador de Wazuh en el dashboard
+```bash
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+```
+Y ahora ejecutamos el instalador de Wazuh con el nombre del nodo dashboard que se especificó en el fichero `config.yml'
+```bash
+bash wazuh-install.sh --wazuh-dashboard <WAZUH_DASHBOARD_NAME> 
+```
+Después se deben obtener las contraseñas para acceder al dashboard.
+```bash
+tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt 
+```
+
+#### Wazuh Agent
+Para instalar un agente en cualquier sistema, se requiere tener la dirección IP donde se ejecutará el agente y conocer el sistema operativo correspondiente. Una vez que se disponen de estos parámetros, desde el panel de control de Wazuh se proporciona un comando que debe ejecutarse en el agente para iniciarlo.
+
 ## Ejecutando las Pruebas ⚙️
 
 Instrucciones y ejemplos para ejecutar el conjunto de pruebas.
