@@ -8,14 +8,6 @@ Este repositorio contiene los scripts y configuraciones utilizados en el desarro
 2) Desarrollo de Reglas y Patrones: Formulación de reglas y patrones específicos para identificar comportamientos anómalos o acciones sospechosas realizadas por usuarios internos.
 3) Integración de Inteligencia Artificial: Investigación y desarrollo de una solución que habilite la aplicación de inteligencia artificial en la identificación y caracterización de amenazas, tales como los Indicadores de Compromiso (IoC).
 
-## Insignias
-
-Insignias que muestran metadatos como el estado de la compilación, la cobertura de las pruebas, el estado de las dependencias, etc.
-
-## Visuales
-
-Capturas de pantalla, videos o GIFs que demuestran lo que hace el proyecto y cómo usarlo.
-
 ## Empezando 🚀
 
 Estas instrucciones te guiarán para obtener una copia de este proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
@@ -31,7 +23,7 @@ Lista de software y herramientas utilizados, incluyendo versiones:
 •	VirtualBox
 
 
-### Instalación 🔧
+## Instalación 🔧
 
 #### Wazuh Indexer
 
@@ -43,11 +35,30 @@ curl -sO https://packages.wazuh.com/4.7/config.yml
 Se debe editar el `config.yml` con el nombre de los nodos y su dirección IP.
 <p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p> 
 
-
+Después se ejecuta el asistente de instalación de Wazuh con la opción `--generate-config-files` para  generar la clave del clúster, los certificados y las contraseñas de Wazuh necesarios para la instalación
 ```bash
-# paso 2
+bash wazuh-install.sh --generate-config-files
 ```
+Luego se copia el archive llamado wazuh-install-files.tar en todos los servidores de la implementación distribuida, incluidos el server, el indexer y el dashboard.
+Ahora para cada nodo indexador: descargamos el instalador de wazuh
+```bash
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+```
+Y ahora se ejecuta el instalador de Wazuh con el nombre del nodo indexer y se inicia el cluster
+```bash
+bash wazuh-install.sh --wazuh-indexer node-1
+bash wazuh-install.sh --start-cluster
+```
+Ahora se debe obtener la contraseña de administrador para comprobar su correcto funcionamiento:
+```bash
+tar -axf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt -O | grep -P "\'admin\'" -A 1
+```
+Obtenida la contraseña se ejecuta lo siguiente de forma separada cambiando los valores que corresponden:
+```bash
+curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200
+curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200/_cat/nodes?v
 
+```
 ## Ejecutando las Pruebas ⚙️
 
 Instrucciones y ejemplos para ejecutar el conjunto de pruebas.
