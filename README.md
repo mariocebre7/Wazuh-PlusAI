@@ -39,14 +39,14 @@ Después se ejecuta el asistente de instalación de Wazuh con la opción `--gene
 ```bash
 bash wazuh-install.sh --generate-config-files
 ```
-Luego se copia el archive llamado wazuh-install-files.tar en todos los servidores de la implementación distribuida, incluidos el server, el indexer y el dashboard.
+Se copia el archivo llamado `wazuh-install-files.tar` en todos los servidores de la implementación distribuida, incluidos el server, el indexer y el dashboard.
 Ahora para cada nodo indexador: descargamos el instalador de wazuh
 ```bash
 curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
 ```
-Y ahora se ejecuta el instalador de Wazuh con el nombre del nodo indexer y se inicia el cluster
+Se ejecuta el instalador de Wazuh con el nombre del nodo indexer y se inicia el cluster
 ```bash
-bash wazuh-install.sh --wazuh-indexer node-1
+bash wazuh-install.sh --wazuh-indexer <WAZUH_INDEXER_NAME>
 bash wazuh-install.sh --start-cluster
 ```
 Ahora se debe obtener la contraseña de administrador para comprobar su correcto funcionamiento:
