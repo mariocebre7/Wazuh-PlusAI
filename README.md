@@ -17,10 +17,10 @@ Estas instrucciones te guiarán para obtener una copia de este proyecto en funci
 Lista de software y herramientas utilizados, incluyendo versiones:
 
 1. Sistemas Operativos:
-•	Microsoft Windows: Windows 11 PRO v10.0.22631 tanto en equipo de trabajo como en la máquina virtual
-•	GNU/Linux: Ubuntu 22.04.3 LTS
-2. Virtualización/Contenedores:
-•	VirtualBox
+   Microsoft Windows: Windows 11 PRO v10.0.22631 tanto en equipo de trabajo como en la máquina virtual
+   GNU/Linux: Ubuntu 22.04.3 LTS
+3. Virtualización/Contenedores:
+   VirtualBox
 
 
 ## Instalación 🔧
