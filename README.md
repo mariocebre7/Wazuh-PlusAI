@@ -33,7 +33,7 @@ curl -sO https://packages.wazuh.com/4.7/config.yml
 
 ```
 Se debe editar el `config.yml` con el nombre de los nodos y su dirección IP.
-<p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p> 
+<p align="center"><img src="indexer-config.yml.png"/></p> 
 
 Después se ejecuta el asistente de instalación de Wazuh con la opción `--generate-config-files` para  generar la clave del clúster, los certificados y las contraseñas de Wazuh necesarios para la instalación
 ```bash
