@@ -87,24 +87,21 @@ tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
 #### Wazuh Agent
 Para instalar un agente en cualquier sistema, se requiere tener la dirección IP donde se ejecutará el agente y conocer el sistema operativo correspondiente. Una vez que se disponen de estos parámetros, desde el panel de control de Wazuh se proporciona un comando que debe ejecutarse en el agente para iniciarlo.
 
-## Ejecutando las Pruebas ⚙️
+## Aspectos a tener en cuenta ⚙️
+Para iniciar y arrancar las máquinas se debe hacer en el siguiente orden:
+1º Server
+2ª Indexer
+3º Dashboard
 
-Instrucciones y ejemplos para ejecutar el conjunto de pruebas.
-
+Para consultar el estado de los distintos componentes se deben ejecutar los siguientes comandos en su correspondiente máquina virtual.
 ```bash
-# proporciona un ejemplo
+systemctl status wazuh-manager #Consultar el estado del Server
+systemctl status wazuh-indexer #Consultar el estado del Indexer
+systemctl status wazuh-dashboard #Consultar el estado del Dashboard
 ```
-
-### Pruebas de Principio a Fin 🔩
-
-Explica qué cubren estas pruebas, por qué son importantes y cómo interpretar sus resultados.
-
-### Pruebas de Estilo de Código ⌨️
-
-Descripción y ejemplos de las pruebas de estilo que estás utilizando.
-
+Para cualquier cambio que se haga en local.rules, ossec.conf, integrations y demás archivos que impliquen un cambio de funcionamiento deberán aplicarse mediante el siguiente comando.
 ```bash
-# proporciona un ejemplo
+systemctl restart wazuh-manager 
 ```
 
 ## Despliegue 📦
