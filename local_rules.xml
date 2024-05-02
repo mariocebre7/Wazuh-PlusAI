@@ -1,0 +1,55 @@
+<group name="attached_usb_storage">
+    <rule id="100001" level="3">
+      <if_sid>81101</if_sid> <!-- Referencia al ID de la regla primaria específica -->
+      <match type="pcre2">\.+</match> <!-- Coincidencia específica -->
+      <time> 1 pm - 9 am</time>
+      <description>Posible INSIDER,se ha conectado un USB fuera de su horario de trabajo</description>
+        <mitre>
+          <id>T1052.001</id>
+        </mitre>
+      <group>gpg13_4.8,</group>
+    </rule>
+</group>
+<group name="sysmon,sysmon_eid1_detections,windows,">
+    <rule id="100002" level="10">
+     <field name="win.eventdata.Image" type="pcre2">(?i)\\(curl|wget|ftp|scp|rsync)\.exe$</field>
+     <options>no_full_log</options>
+     <time> 2 pm - 9 am</time>
+     <description>Posible INSIDER alguien está transfiriendo archivos mediante $(win.eventdata.Image)</description>
+     <mitre>
+        <id>T1567</id>
+     </mitre>
+    </rule>
+</group>
+<group name="sysmon,sysmon_eid1_detection,windows,">
+<rule id="100003" level="6" frequency="3" timeframe="60">
+   <if_matched_sid>92063</if_matched_sid>
+    <field name="win.eventdata.originalFileName" type="pcre2">(?i)sdelete\.exe</field>
+    <options>no_full_log</options>
+    <description>Posible INSIDER, archivos borrados por $(win.eventdata.originalFileName), 3 archivos en 1 minuto. Comando: $(win.eventdata.commandLine)</description>
+    <mitre>
+        <id>T1070.004</id>
+    </mitre>
+</rule>
+
+</group>
+<group name="security_event, windows,">
+    <!-- T1011 - Exfiltration -->
+    <rule id="100004" level="12">
+        <if_sid>60103</if_sid>
+        <field name="win.system.eventID">^5145$</field>
+        <options>no_full_log</options>
+        <description>Posible INSIDER,se ha creado una nueva carpeta compartida en el sistema.</description>
+	<mitre>
+	 <id>T1011</id>
+	</mitre>    
+    </rule>
+</group>
+<group name="attached_usb_storage">
+  <rule id="100007" level="3"> 
+  <field name="chatgpt.choices">\.+</field>
+    <description>$(data.chatgpt.choices") >> VER MÁS INFO</description>
+    <group>gpg13_4.8,</group>
+  </rule>
+</group>
+
