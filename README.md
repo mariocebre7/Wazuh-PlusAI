@@ -104,49 +104,17 @@ Para cualquier cambio que se haga en local.rules, ossec.conf, integrations y dem
 systemctl restart wazuh-manager 
 ```
 
-## Despliegue 📦
-
-Instrucciones sobre cómo desplegar esto en un sistema en vivo o ambiente de producción.
-
 ## Construido Con 🛠️
 
-Explica qué tecnologías usaste para construir este proyecto. Aquí algunos ejemplos:
-
-- [Ruby](https://www.ruby-lang.org/es/) - El lenguaje utilizado
-- [Ruby on Rails](https://rubyonrails.org) - El framework web utilizado
-- [Ruby gems](https://rubygems.org) - Gestión de dependencias
-- [Postgresql](https://www.postgresql.org) - Sistema de base de datos
-- [Bulma IO](https://bulma.io) - Framework de CSS
-
-## Contribuyendo 🖇️
-
-Las contribuciones son lo que hacen a la comunidad de código abierto un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas es muy apreciada. Por favor, lee el [CONTRIBUTING.md](https://gist.github.com/brayandiazc/xxxxxx) para detalles sobre nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más sobre cómo usar este proyecto en nuestra [Wiki](https://github.com/your/project/wiki)
-
-## Soporte
-
-Si tienes algún problema o sugerencia, por favor abre un problema [aquí](https://github.com/your/project/issues).
+Los scripts han sido realizados en Python
+- [Python](https://www.learnpython.org/es/) - El lenguaje utilizado
 
 ## Roadmap
 
-Ideas, mejoras planificadas y actualizaciones futuras
-
-para el proyecto actual.
-
-## Versionado 📌
-
-Usamos [Git](https://git-scm.com) para el versionado. Para las versiones disponibles, ve las [etiquetas en este repositorio](https://github.com/your/project/tags).
+La tendencia para la mejora de este proyecto radica en el entrenamiento del asistente de OpenAI, a mayor entrenamiento, documentos e intrucciones añadidas mejro será Wazuh.
 
 ## Autores ✒️
 
 - **Mario Muñoz** - [Mario M](https://github.com/mariocebre7)
 
-
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia XYZ - ve el archivo [LICENSE.md](LICENSE.md) para detalles
 
