@@ -1,4 +1,4 @@
-#### Aspectos importantes
+### Aspectos importantes
 Se deben dar permisos de ejecución a todas las integraciones que vayan a ser utilizadas, por ejemplo:
 ```bash
 chmod 750 /var/ossec/integrations/custom-telegram*
@@ -11,5 +11,18 @@ Y hay que especificar en la configuración de Wazuh que se cuenta con una integr
         <level>3</level>
         <hook_url>https://api.telegram.org/bot*API KEY*/sendMessage</hook_url>
         <alert_format>json</alert_format>
+</integration>
+```
+### Script de Python Asistente ChatGPT
+```xml
+</integration>
+<!-- ChatGPT Integration -->
+  <integration>
+    <name>custom-chatgpt5</name>
+    <hook_url>https://api.openai.com/v1/threads</hook_url>
+    <api_key>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</api_key>
+    <level>3</level>
+    <rule_id>100001</rule_id>
+    <alert_format>json</alert_format>
 </integration>
 ```
