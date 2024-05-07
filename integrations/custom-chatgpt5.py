@@ -56,8 +56,8 @@ def debug(msg):
 # Recopila información relevante de los datos obtenidos de ChatGPT.
 def collect(data):
     full_log = data['full_log']
-    choices = data['content']
-    return full_log, choices
+    content = data['content']
+    return full_log, content
 
 # Verifica si la información de la alerta está en la base de datos de ChatGPT.
 def in_database(data, full_log):
@@ -136,11 +136,11 @@ def request_chatgpt_info(alert, apikey):
         alert_output["chatgpt"]["found"] = 1
     # Info about the IP found in chatgpt
     if alert_output["chatgpt"]["found"] == 1:
-        full_log, choices = collect(data)
+        full_log, content = collect(data)
 
         # Populate JSON Output object with chatgpt request
         alert_output["chatgpt"]["full_log"] = full_log
-        alert_output["chatgpt"]["choices"] = choices
+        alert_output["chatgpt"]["content"] = content
 
         debug(alert_output)
 
