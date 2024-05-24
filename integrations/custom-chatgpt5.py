@@ -87,7 +87,7 @@ def query_api(full_log, apikey):
     thread_id = response1.json()["thread_id"]
     time.sleep(10)
 # 2º Se obtiene el id de la respuesta generada por el asistente  
-    response2 = requests.get(f'https://api.openai.com/v1/threads/{thread_id}/messages', headers=headers)
+    response2 = requests.get('https://api.openai.com/v1/threads/{thread_id}/messages', headers=headers)
     first_id = response2.json()["first_id"]
 # 3º Se obtiene el mensaje generado por el asistente 
     response = requests.get(f'https://api.openai.com/v1/threads/{thread_id}/messages/{first_id}', headers=headers)
