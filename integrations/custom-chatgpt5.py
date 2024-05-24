@@ -82,14 +82,16 @@ def query_api(full_log, apikey):
             ]
         }
     }
-# 1º Se carga la alerta generada en el asistenet de OpenAI  
+# 1º Se carga el mensaje en el asistente y se lanza. 
     response1 = requests.post('https://api.openai.com/v1/threads/runs', headers=headers, json=json_data)
+# 2º Se obtiene el id del hilo generado por el asistente.  
     thread_id = response1.json()["thread_id"]
     time.sleep(10)
-# 2º Se obtiene el id de la respuesta generada por el asistente  
-    response2 = requests.get('https://api.openai.com/v1/threads/{thread_id}/messages', headers=headers)
+# 3º Se obtienen los mensajes del hilo generado.
+    response2 = requests.get(f'https://api.openai.com/v1/threads/{thread_id}/messages', headers=headers)
+# 4º Se obtiene el id del mensaje generado por el asistente que corresponde a first_id
     first_id = response2.json()["first_id"]
-# 3º Se obtiene el mensaje generado por el asistente 
+# 5º Se obtiene el contenido de la respuesta generada por el asistente.
     response = requests.get(f'https://api.openai.com/v1/threads/{thread_id}/messages/{first_id}', headers=headers)
 
     if response.status_code == 200:
