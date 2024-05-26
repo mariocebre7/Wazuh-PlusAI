@@ -21,7 +21,7 @@ En el archivo `/var/ossec/etc/ossec.conf` hay que añadir lo siguiente:
   <integration>
     <name>custom-chatgpt5</name>
     <hook_url>https://api.openai.com/v1/threads</hook_url>
-    <api_key>API KEY/api_key> # Cambiar por el correspondiente API KEY
+    <api_key>API KEY</api_key> # Cambiar por el correspondiente API KEY
     <level>3</level>
     <rule_id>100001</rule_id>
     <alert_format>json</alert_format>
