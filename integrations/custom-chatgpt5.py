@@ -1,8 +1,10 @@
 #!/var/ossec/framework/python/bin/python3
-import os
+
 import json
 import time
 import sys
+import os
+
 from socket import socket, AF_UNIX, SOCK_DGRAM
 
 try:
