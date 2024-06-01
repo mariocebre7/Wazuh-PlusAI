@@ -1,30 +1,31 @@
 #!/var/ossec/framework/python/bin/python3
-import json
-import sys
-import time
 import os
+import json
+import time
+import sys
 from socket import socket, AF_UNIX, SOCK_DGRAM
 
 try:
     import requests
     from requests.auth import HTTPBasicAuth
 except Exception as e:
-    print("No module 'requests' found. Install: pip install requests")
+    print("Modulo 'requests' no encontrado. Para instalar: pip install requests")
     sys.exit(1)
 
-# Global vars
+# Variables globales
+
 debug_enabled = False
 pwd = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 json_alert = {}
 now = time.strftime("%a %b %d %H:%M:%S %Z %Y")
-# Set paths
+# Rutas
 log_file = '{0}/logs/integrations.log'.format(pwd)
 socket_addr = '{0}/queue/sockets/queue'.format(pwd)
 
 def main(args):
     debug("# Starting")
-    # Read args
+    # Leer argumentos de entrada del archivo ossec.conf
     alert_file_location = args[1]
     apikey = args[2]
     debug("# API Key")
@@ -32,15 +33,15 @@ def main(args):
     debug("# File location")
     debug(alert_file_location)
 
-    # Load alert. Parse JSON object.
+    # Cargar alerta. Parsear objeto JSON
     with open(alert_file_location) as alert_file:
         json_alert = json.load(alert_file)
     debug("# Processing alert")
     debug(json_alert)
 
-    # Request chatgpt info
+    # Pedir información de ChatGPT
     msg = request_chatgpt_info(json_alert,apikey)
-    # If positive match, send event to Wazuh Manager
+    # Si hay una coincidencia, se envía al Servidor de Wazuh 
     if msg:
         send_event(msg, json_alert["agent"])
       
