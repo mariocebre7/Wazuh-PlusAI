@@ -52,4 +52,10 @@
     <group>gpg13_4.8,</group>
   </rule>
 </group>
-
+<group name="attached_usb_storage">
+  <rule id="100008" level="3" frequency="2" timeframe="60"> 
+  <if_matched_sid>100001</if_matched_sid>
+  <if_sid>553</if_sid>
+    <description>ATENCION se ha conectado un USB y se han borrado datos</description>
+  </rule>
+</group>
